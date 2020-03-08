@@ -35,8 +35,8 @@ client.py -a server_ip_address -p server_port
 * [requests](https://requests.readthedocs.io/en/master/) - External library used for the ddos
 
 ## Authors
-* [**Michaux Clément**] - *Initial work* - [Personnal website](www.clement-michaux.be)
-* [**Laenen Maximilien**] - *Initial work* - [Personnal website](www.maximilien-laenen.be)
+* **Michaux Clément** - *Initial work* - [Personnal website](www.clement-michaux.be)
+* **Laenen Maximilien** - *Initial work* - [Personnal website](www.maximilien-laenen.be)
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE.md](link) file for details.
