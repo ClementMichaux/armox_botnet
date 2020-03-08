@@ -39,7 +39,7 @@ client.py -a server_ip_address -p server_port
 * **Laenen Maximilien** - *Initial work* - [Personnal website](www.maximilien-laenen.be)
 
 ## License
-This project is licensed under the MIT License - see the [LICENSE.md](link) file for details.
+This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/MaxBresil/armox_botnet/blob/master/LICENSE.md) file for details.
 
 ## Disclaimer
 We decline all responsibility for any malicious use of this software.
