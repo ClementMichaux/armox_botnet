@@ -26,7 +26,7 @@ You need to start the server first otherwise your client won't be able to connec
 ```batch
 client.py -a server_ip_address -p server_port
 ```
-.bat files are present as an example
+.bat file is present as an example
 
 ## Built with
 * [Python](https://www.python.org/) - Main programing language of the malware
