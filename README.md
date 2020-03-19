@@ -22,28 +22,30 @@ For a better explanation, you can read the report present on the repository (in 
 
 ## Server Deployement
 The program is using argparse, like that you can choose on which ip address and on which port you would like to start it.
-Once launched, the register key is created with the argument that you choose.
-You need to start the server first otherwise your client won't be able to connect
 ```bash
 python3 server.py -a server_ip_address -p server_port
 ```
 
-You can compile the server with pyinstaller
+If you want, you can compile the server with pyinstaller
 ```bash
 pyinstaller --onefile server.py
 ```
+In the dist directory you can find your executable client.
 
 ## Client Deployement
-Open client.py and edit this lines :
+You need to start the server first otherwise your client won't be able to connect.
+
+Open client.py and edit these lines :
 ```python3
 self.ip = "server_ip_address"
 self.port = server_port
 ```
 
-Copy client to a windows and compile this with pyinstaller
+Copy client.py to a windows machine and compile it with pyinstaller
 ```python3
 pyinstaller --onefile client.py
 ```
+In the dist directory you can find your executable client.
 
 ## Built with
 * [Python](https://www.python.org/) - Main programing language of the malware
