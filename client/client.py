@@ -27,6 +27,7 @@ class Client:
             ainsi que l'écoute qui est en True
         """
         
+        # You can modify IP and PORT here
         self.ip = "192.168.1.52"
         self.port = 666
         
