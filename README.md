@@ -55,7 +55,7 @@ py client.py
 ```
 
 ### Compilation
-```python3
+```batch
 pyinstaller --onefile client.py
 ```
 In the dist directory, you will find your .exe client.
