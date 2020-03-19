@@ -20,19 +20,27 @@ For a better explanation, you can read the report present on the repository (in 
 	```
 - Installing a text editor of your choice (we're using pyCharm)
 
-## Server Deployement
-The program is using argparse, like that you can choose on which ip address and on which port you would like to start it.
+## Server Deployement (WINDOWS or LINUX)
+Server is using argparse, like that you can choose on which ip address and on which port you would like to start it.
+
+### Launch on Linux
 ```bash
 python3 server.py -a server_ip_address -p server_port
 ```
 
+### Launch on Windows
+```batch
+py server.py -a server_ip_address -p server_port
+```
+
+### Compilation
 If you want, you can compile the server with pyinstaller
 ```bash
 pyinstaller --onefile server.py
 ```
 In the dist directory you can find your executable client.
 
-## Client Deployement
+## Client Deployement (ONLY on WINDOWS)
 You need to start the server first otherwise your client won't be able to connect.
 
 Open client.py and edit these lines :
@@ -41,11 +49,16 @@ self.ip = "server_ip_address"
 self.port = server_port
 ```
 
-Copy client.py to a windows machine and compile it with pyinstaller
+### Launch
+```batch
+py client.py
+```
+
+### Compilation
 ```python3
 pyinstaller --onefile client.py
 ```
-In the dist directory you can find your executable client.
+In the dist directory, you will find your .exe client.
 
 ## Built with
 * [Python](https://www.python.org/) - Main programing language of the malware
