@@ -55,6 +55,7 @@ py client.py
 ```
 
 ### Compilation
+If you want, you can compile the server with pyinstaller
 ```batch
 pyinstaller --onefile client.py
 ```
