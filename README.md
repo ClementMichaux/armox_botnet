@@ -1,6 +1,6 @@
 # Armox Botnet
 
-A simple piece of malware developped in Python with some functionalities like a botnet, a keylogger and a ddos.
+A simple piece of malware developped in Python with some functionalities like a botnet, a keylogger and a http ddos.
 
 ## Getting started
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
